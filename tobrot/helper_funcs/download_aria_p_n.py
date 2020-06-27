@@ -222,7 +222,7 @@ async def call_apropriate_function(
         message_id = final_response[key_f_res_se]
         channel_id = str(AUTH_CHANNEL)[4:]
         private_link = f"https://t.me/c/{channel_id}/{message_id}"
-        message_to_send += "👉 <a href='"
+        message_to_send += "📌 <a href='"
         message_to_send += private_link
         message_to_send += "'>"
         message_to_send += local_file_name
@@ -233,7 +233,7 @@ async def call_apropriate_function(
         message_to_send = mention_req_user + message_to_send
         message_to_send = message_to_send + "\n\n" + "#uploads"
     else:
-        message_to_send = "<i>FAILED</i> to upload files. 😞😞"
+        message_to_send = "<i>FAILED</i> to upload files.📤😔"
     await sent_message_to_update_tg_p.reply_to_message.reply_text(
         text=message_to_send,
         quote=True,
@@ -384,7 +384,7 @@ async def call_apropriate_function_t(
         message_id = final_response[key_f_res_se]
         channel_id = str(AUTH_CHANNEL)[4:]
         private_link = f"https://t.me/c/{channel_id}/{message_id}"
-        message_to_send += "👉 <a href='"
+        message_to_send += "📌 <a href='"
         message_to_send += private_link
         message_to_send += "'>"
         message_to_send += local_file_name
@@ -395,7 +395,7 @@ async def call_apropriate_function_t(
         message_to_send = mention_req_user + message_to_send
         message_to_send = message_to_send + "\n\n" + "#uploads"
     else:
-        message_to_send = "<i>FAILED</i> to upload files. 😞😞"
+        message_to_send = "<i>FAILED</i> to upload files.📤😔"
     await sent_message_to_update_tg_p.reply_to_message.reply_text(
         text=message_to_send,
         quote=True,
@@ -414,19 +414,19 @@ async def check_progress_for_dl(aria2, gid, event, previous_message):
         if not complete:
             if not file.error_message:
                 msg = ""
-                # sometimes, this weird https://t.me/c/1220993104/392975
+                # sometimes, this weird https://t.me/
                 # error creeps up
                 # TODO: temporary workaround
                 downloading_dir_name = "N/A"
                 try:
                     # another derp -_-
-                    # https://t.me/c/1220993104/423318
+                    # https://t.me/
                     downloading_dir_name = str(file.name)
                 except:
                     pass
                 #
                 msg = f"\nDownloading File: `{downloading_dir_name}`"
-                msg += f"\nSpeed: {file.download_speed_string()} 🔽 / {file.upload_speed_string()} 🔼"
+                msg += f"\nSpeed: {file.download_speed_string()} 📥 / {file.upload_speed_string()} 📤"
                 msg += f"\nProgress: {file.progress_string()}"
                 msg += f"\nTotal Size: {file.total_length_string()}"
 
@@ -473,7 +473,7 @@ async def check_metadata(aria2, gid):
     file = aria2.get_download(gid)
     LOGGER.info(file)
     if not file.followed_by_ids:
-        # https://t.me/c/1213160642/496
+        # https://t.me/
         return None
     new_gid = file.followed_by_ids[0]
     LOGGER.info("Changing GID " + gid + " to " + new_gid)
